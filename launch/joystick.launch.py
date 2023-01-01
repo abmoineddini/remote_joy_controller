@@ -9,7 +9,7 @@ from ament_index_python.packages import get_package_share_directory
 def generate_launch_description():
     use_sim_time = LaunchConfiguration('use_sim_time')
 
-    joy_params = os.path.join(get_package_share_directory('remote_joy_controller'),'config','joystick.yaml')
+    joy_params = os.path.join(get_package_share_directory('remote_joy_controller'),'config','joystickconfig.yaml')
 
     joy_node = Node(
             package='remote_joy_controller',
@@ -35,7 +35,3 @@ def generate_launch_description():
         teleop_node, 
     ])
 
-## teleop twist key does not read file from config so change in param manually needed
-# ros2 param set /teleop_node axis_linear.x 1
-# ros2 param set /teleop_node axis_angular.yaw 0
-# ros2 param set /teleop_node require_enable_button false
