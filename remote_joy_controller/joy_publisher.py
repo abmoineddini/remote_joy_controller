@@ -21,6 +21,8 @@ class JoyNode(Node):
         self.pub_ = self.create_publisher(Joy, "/joy", 10)
         self.timers_ = self.create_timer(0.02, self.publisher_data)
         self.declare_parameter("device_id", 0)
+        self.declare_parameter("deadzone", 0.0)
+        self.declare_parameter("autorepeat_rate", 20.0)
     
 
     def publisher_data(self):
@@ -39,6 +41,7 @@ class JoyNode(Node):
             self.pub_.publish(msg)
         except:
             pass
+
 
 def main(arg=None):
     rclpy.init(args=arg)
